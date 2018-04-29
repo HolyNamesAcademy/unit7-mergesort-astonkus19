@@ -49,8 +49,9 @@ public class Main {
      */
     public static void mergeSort(ArrayList<Integer> arrayList) {
 
+        sort(arrayList, 0, arrayList.size());
+        merge(arrayList, 0, arrayList.size()/2, arrayList.size());
 
-        throw new UnsupportedOperationException("mergeSort() has not been implemented yet");
     }
 
     /**
@@ -64,7 +65,13 @@ public class Main {
      * @param hi        the index of the last element in the range + 1.
      */
     public static void sort(ArrayList<Integer> arrayList, int lo, int hi) {
-        throw new UnsupportedOperationException("sort() has not been implemented yet");
+        if(hi - lo <= 1)
+        {
+            return;
+        }
+        int mid = (hi - lo) / 2;
+        sort(arrayList, mid, hi);
+        sort(arrayList,lo, mid, hi);
     }
 
     /**
@@ -82,11 +89,11 @@ public class Main {
         ArrayList<Integer> nums = new ArrayList<Integer>;
         int[] numsArray = new int[hi - lo];
         int k = 0;
-        for (int i = lo; i < hi; i++)
-            if (arrayList.get(lo + k) <= mid + k)
-                nums.add(arrayList.get(lo + k));
-                k++;
-
+       while()
+           if(arrayList.get(lo + k) <= arrayList.get(mid + k)) {
+               nums.add(arrayList.get(lo + k));
+               k++;
+           }
 
 
     }
