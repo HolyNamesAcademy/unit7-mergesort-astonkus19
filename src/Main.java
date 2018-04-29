@@ -69,9 +69,10 @@ public class Main {
         {
             return;
         }
-        int mid = (hi - lo) / 2;
+        int mid = (hi + lo) / 2;
+        sort(arrayList, lo, mid);
         sort(arrayList, mid, hi);
-        sort(arrayList,lo, mid, hi);
+        merge(arrayList,lo, mid, hi);
     }
 
     /**
@@ -86,15 +87,31 @@ public class Main {
      * @param hi        the index of the last element in the second range + 1.
      */
     public static void merge(ArrayList<Integer> arrayList, int lo, int mid, int hi) {
-        ArrayList<Integer> nums = new ArrayList<Integer>;
-        int[] numsArray = new int[hi - lo];
-        int k = 0;
-       while()
-           if(arrayList.get(lo + k) <= arrayList.get(mid + k)) {
-               nums.add(arrayList.get(lo + k));
-               k++;
-           }
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+        int a = lo;
+        int b = mid;
 
-
+        while(a < mid ||b < hi)
+            if(b == hi) {
+                nums.add(arrayList.get(a));
+                a++;
+            }
+            else if(a == mid) {
+                nums.add(arrayList.get(b));
+                b++;
+            }
+            else if(arrayList.get(b) < arrayList.get(a)) {
+                nums.add(arrayList.get(b));
+                b++;
+            }
+            else
+            {
+                nums.add(arrayList.get(a));
+                a++;
+            }
+        for(int index = 0; index < nums.size(); index++)
+            arrayList.set(index + lo, nums.get(index));
     }
+
+
 }
